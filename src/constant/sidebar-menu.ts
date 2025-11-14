@@ -14,21 +14,7 @@ const createMenuItem = (
   ...options,
 });
 
-const createMenuItemWithChildren = (
-  id: string,
-  name: string,
-  path: string,
-  icon: MenuItem['icon'],
-  children: MenuItem[],
-  options: Partial<Omit<MenuItem, 'id' | 'name' | 'path' | 'icon' | 'children'>> = {}
-): MenuItem => ({
-  id,
-  name,
-  path,
-  icon,
-  children,
-  ...options,
-});
+
 
 {
   /* for permission wise restriction 
@@ -47,7 +33,10 @@ createMenuItem('invoices', 'INVOICES', '/invoices', 'ReceiptText', {
 
 export const menuItems: MenuItem[] = [
 
-  createMenuItem('iam', 'IAM', '/', 'Users', {
+  createMenuItem('iam', 'IAM', '/iam', 'Users', {
+    isIntegrated: true,
+  }),
+  createMenuItem('email-agent', 'Email Agent', '/email-agent', 'MessageSquareText', {
     isIntegrated: true,
   }),
   

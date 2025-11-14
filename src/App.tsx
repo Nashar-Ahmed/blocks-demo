@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SidebarProvider } from '@/components/ui-kit/sidebar';
 import { LoadingOverlay } from '@/components/core';
-import { ProfilePage } from '@/modules/profile';
 import { UsersTablePage } from '@/modules/iam';
+import { EmailAgentPage } from '@/modules/email-agent';
 import { MainLayout } from '@/layout/main-layout/main-layout';
 import { Toaster } from '@/components/ui-kit/toaster';
 import { ClientMiddleware } from '@/state/client-middleware';
@@ -30,7 +30,9 @@ function AppContent() {
               {AuthRoutes}
               <Route element={<MainLayout />}>
 
-              <Route path="/" element={<UsersTablePage />} />
+              <Route path="/" element={<Navigate to="/iam" replace />} />
+              <Route path="/iam" element={<UsersTablePage />} />
+              <Route path="/email-agent" element={<EmailAgentPage />} />
  
                 {/* 
                 To implement permissions for feature Invoices
